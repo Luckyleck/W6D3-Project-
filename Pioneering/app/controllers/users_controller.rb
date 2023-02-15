@@ -33,5 +33,18 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :email)
     end
 
+    def update
+        
+        @user = User.find(params[:id])
+        if @user.update(strong_params)
+            redirect_to users_url(@user.id)
+
+        else
+            render json: @user.errors.full_messages, status: :unprocessable_entity
+
+        end
+
+    end
+
 
 end
