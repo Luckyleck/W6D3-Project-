@@ -10,7 +10,7 @@
 #
 class ArtworkShare < ApplicationRecord
 
-    # validates :artwork_id, :viewer_id, null: false
+    validates :artwork_id, :viewer_id, presence: true
     validates :artwork_id, uniqueness: {scope: :viewer_id}
 
     belongs_to :artwork, 
